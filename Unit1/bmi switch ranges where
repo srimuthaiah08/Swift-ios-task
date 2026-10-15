@@ -1,0 +1,16 @@
+import Foundation
+
+let bmi = 22.5
+
+switch bmi {
+case ..<18.5:
+    print("Underweight")
+case 18.5..<25 where bmi >= 18.5:
+    print("Normal")
+case 25..<30:
+    print("Overweight")
+case 30...:
+    print("Obese")
+default:
+    print("Invalid BMI")
+}
