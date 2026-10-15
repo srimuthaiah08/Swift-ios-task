@@ -1,0 +1,13 @@
+class Vehicle {
+    var brand: String
+    init(brand: String) { self.brand = brand }
+    func description() -> String { return "A vehicle made by \(brand)." }
+}
+class Car: Vehicle {
+    override func description() -> String { return "A car made by \(brand)." }
+}
+class Bike: Vehicle {
+    override func description() -> String { return "A bike made by \(brand)." }
+}
+let vehicles: [Vehicle] = [Vehicle(brand: "Generic Motors"), Car(brand: "Toyota"), Bike(brand: "Yamaha")]
+for vehicle in vehicles { print(vehicle.description()) }

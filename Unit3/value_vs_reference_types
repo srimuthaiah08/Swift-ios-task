@@ -1,0 +1,17 @@
+struct ScoreCard { var score: Int }
+class Player {
+    var score: Int
+    init(score: Int) { self.score = score }
+}
+var originalStruct = ScoreCard(score: 10)
+var copiedStruct = originalStruct
+copiedStruct.score = 20
+let originalClass = Player(score: 10)
+let copiedClass = originalClass
+copiedClass.score = 20
+print("Original struct score: \(originalStruct.score)")
+print("Copied struct score: \(copiedStruct.score)")
+print("Original class score: \(originalClass.score)")
+print("Copied class score: \(copiedClass.score)")
+// Structs are value types: the copy is independent, so the original stays 10.
+// Classes are reference types: both variables refer to the same object, so both show 20.

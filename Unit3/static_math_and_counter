@@ -1,0 +1,12 @@
+struct MathHelper {
+    static func square(_ number: Int) -> Int { return number * number }
+}
+class Counter {
+    static var instancesCreated = 0
+    init() { Counter.instancesCreated += 1 }
+}
+print("Square of 6: \(MathHelper.square(6))")
+let firstCounter = Counter()
+let secondCounter = Counter()
+let thirdCounter = Counter()
+print("Counter instances created: \(Counter.instancesCreated)")

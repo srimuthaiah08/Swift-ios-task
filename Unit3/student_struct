@@ -1,0 +1,9 @@
+struct Student {
+    var name: String
+    var rollNumber: Int
+    var marks: Double
+}
+let student1 = Student(name: "Anu", rollNumber: 101, marks: 85)
+let student2 = Student(name: "Ravi", rollNumber: 102, marks: 72)
+print("Name: \(student1.name), Roll: \(student1.rollNumber), Marks: \(student1.marks)")
+print("Name: \(student2.name), Roll: \(student2.rollNumber), Marks: \(student2.marks)")

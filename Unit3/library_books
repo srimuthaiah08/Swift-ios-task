@@ -1,0 +1,33 @@
+class Book {
+    let title: String
+    let author: String
+    init(title: String, author: String) { self.title = title; self.author = author }
+}
+class Library {
+    private var books: [Book] = []
+    func add(_ book: Book) { books.append(book); print("Added: \(book.title)") }
+    func remove(title: String) {
+        guard let index = books.firstIndex(where: { $0.title.lowercased() == title.lowercased() }) else {
+            print("Book not found: \(title)"); return
+        }
+        let removedBook = books.remove(at: index)
+        print("Removed: \(removedBook.title)")
+    }
+    func search(title: String) {
+        let matches = books.filter { $0.title.localizedCaseInsensitiveContains(title) }
+        if matches.isEmpty { print("No matching books found.") }
+        else { for book in matches { print("Found: \(book.title) by \(book.author)") } }
+    }
+    func listBooks() {
+        if books.isEmpty { print("The library has no books."); return }
+        print("Books in library:")
+        for book in books { print("- \(book.title) by \(book.author)") }
+    }
+}
+let library = Library()
+library.add(Book(title: "Swift Basics", author: "A. Kumar"))
+library.add(Book(title: "Learning Programming", author: "S. Rao"))
+library.listBooks()
+library.search(title: "Swift")
+library.remove(title: "Swift Basics")
+library.listBooks()

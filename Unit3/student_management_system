@@ -1,0 +1,41 @@
+enum Grade: String {
+    case A, B, C, D, F
+    static func from(marks: Double) -> Grade {
+        switch marks {
+        case 90...100: return .A
+        case 80..<90: return .B
+        case 70..<80: return .C
+        case 60..<70: return .D
+        default: return .F
+        }
+    }
+}
+struct Student {
+    let name: String
+    let rollNumber: Int
+    let marks: Double
+    var grade: Grade { return Grade.from(marks: marks) }
+}
+class School {
+    private var students: [Student] = []
+    func addStudent(_ student: Student) {
+        guard (0...100).contains(student.marks) else {
+            print("Cannot add \(student.name): marks must be between 0 and 100.")
+            return
+        }
+        students.append(student)
+    }
+    func printReport() {
+        print("STUDENT MANAGEMENT REPORT")
+        print("-------------------------")
+        for student in students.sorted(by: { $0.marks > $1.marks }) {
+            print("Roll: \(student.rollNumber) | Name: \(student.name) | Marks: \(student.marks) | Grade: \(student.grade.rawValue)")
+        }
+    }
+}
+let school = School()
+school.addStudent(Student(name: "Anu", rollNumber: 101, marks: 92))
+school.addStudent(Student(name: "Ravi", rollNumber: 102, marks: 76))
+school.addStudent(Student(name: "Meena", rollNumber: 103, marks: 85))
+school.addStudent(Student(name: "Kiran", rollNumber: 104, marks: 59))
+school.printReport()
